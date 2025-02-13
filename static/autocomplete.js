@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`/api/items?query=${encodeURIComponent(query)}`);
             const items = await response.json();
             suggestionsDiv.innerHTML = '';
-            if (items.length == 0) {
+            if (items.length < 3) {
                 suggestionsDiv.style.display = 'none';
                 return;
             }
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     itemInput.addEventListener('focus', () => {
         const query = e.target.value.trim();
 
-        if (query.length >= 1) {
+        if (query.length >= 3) {
             debounce(() => updateSuggestions(query), 300);
         } else {
             datalist.innerHTML = '';
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     itemInput.addEventListener('input', (e) => {
         const query = e.target.value.trim();
 
-        if (query.length >= 1) {
+        if (query.length >= 3) {
             debounce(() => updateSuggestions(query), 300);
         } else {
             datalist.innerHTML = '';

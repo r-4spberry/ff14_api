@@ -79,7 +79,7 @@ async def index(request: Request):
     # Ensure no None/undefined
     worlds = [world for world in worlds if world is not None]
     return templates.TemplateResponse(
-        "index.html",
+        "index.jinja",
         {
             "request": request,
             "data_centers": data_centers,
@@ -109,7 +109,7 @@ async def search(
     item_id = lookup_item_id(item_name, items)
     if item_id is None:
         return templates.TemplateResponse(
-            "index.html",
+            "index.jinja",
             {
                 "request": request,
                 "item_names": [names["en"] for names in items.values()],
@@ -128,7 +128,7 @@ async def search(
             current_data = await universalis.current_data(data_center, [item_id])
         except Exception as e:
             return templates.TemplateResponse(
-                "index.html",
+                "index.jinja",
                 {
                     "request": request,
                     "item_names": [names["en"] for names in items.values()],
@@ -150,7 +150,7 @@ async def search(
         highlighted.append((world, "{:,}".format(price), is_home))
 
     return templates.TemplateResponse(
-        "index.html",
+        "index.jinja",
         {
             "request": request,
             "item_names": [names["en"] for names in items.values()],
