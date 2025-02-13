@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8">
+  <title>Universalis Item Search</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+  <h1>Universalis Item Search</h1>
+
+  <form action="/search" method="post">
+    <div class="input-container">
+      <label for="item_name">Item Name:</label>
+      <input type="text" id="item_name" name="item_name" list="item_names" 
+        {% if searched_item is defined %} 
+            value="{{ searched_item }}" 
+        {% endif %} 
+        required>
+      <div id="item_names" class="item_names"></div>
+    </div>
+    <div>
+      <label for="data_center">Data Center:</label>
+      <select name="data_center" id="data_center" required>
+        {% for dc in data_centers %}
+        <option value="{{ dc.name }}" {% if selected_dc is defined and selected_dc==dc.name %} selected {% endif %}>
+          {{ dc.name }} ({{ dc.region }})
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="home_world">Home World:</label>
+      <select name="home_world" id="home_world" required>
+        <!--Populated dynamically :3-->
+      </select>
+    </div>
+
+    <button type="submit">Search</button>
+  </form>
+
+  {% if results %}
+  <h2>Results for "{{ searched_item }}"</h2>
+  {% if results is string %}
+  <p>{{ results }}</p>
+  {% else %}
+  <table border="1">
+    <thead>
+      <tr>
+        <th>World Name</th>
+        <th>Price Per Unit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for world, price, highlight in results %}
+      <tr {% if highlight %} style="background-color: #ffff99;" {% endif %}>
+        <td>{{ world }}</td>
+        <td>{{ price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  {% endif %}
+  <script>
+    const worlds = {{ worlds | tojson}};
+    const data_centers = {{ data_centers | tojson}}
+  </script>
+  <script src="/static/autocomplete.js"></script>
+  <script src="/static/filter_worlds.js"></script>
+</body>
+
+</html>

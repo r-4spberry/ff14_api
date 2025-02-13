@@ -1,0 +1,178 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Body Styling */
+  body {
+    background-color: #f4f7f6;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  /* Heading Styling */
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  /* Form Container */
+  form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  /* Form Label */
+  label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #34495e;
+  }
+  
+  /* Input & Select Styles */
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #34495e;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Input & Select Focus */
+  input[type="text"]:focus,
+  select:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  /* Button Styling */
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+
+  .input-container {
+    position: relative;
+    width: 100%;
+  }
+  
+
+  .item_names {
+    width: 100%;
+    max-height: 300px; /* Set a maximum height */
+    overflow-y: auto;  /* Enables vertical scroll when content overflows */
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 10;
+    left: 0;
+    top: 100%; /* Positions dropdown below the input */
+    margin-top: -0.5rem; /* Adjust to reduce gap */
+  } 
+
+  .suggestion-item {
+      display: flex;
+      align-items: center; /* Vertically centers the image and text */
+      padding: 8px; /* Adds padding around the items */
+  }
+
+  .item-icon {
+      width: 24px; /* Set the size of the image */
+      height: 24px;
+      margin-right: 8px; /* Adds some space between the image and text */
+  }
+
+  .item-name {
+      flex-grow: 1; /* Ensures the text takes the remaining space */
+  }
+
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 0.8rem;
+    text-align: left;
+    font-size: 1rem;
+    color: #34495e;
+  }
+  
+  table th {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table tr:hover {
+    background-color: #ecf0f1;
+  }
+  
+  /* Animation for the form fade-in */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 10px;
+    }
+  
+    form {
+      padding: 1.5rem;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  
